@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editable Profile - Kostantine</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&family=Peralta&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+  <!-- Custom CSS -->
+  <style>
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      max-height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar-nav .nav-item .nav-link,
+    .navbar-nav .nav-item .btn {
+      font-size: 1.2rem;
+    }
+
+    .fixed-top {
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .container {
+      margin-top: 80px;
+    }
+
+    .img-logo {
+      height: 40px;
+    }
+
+    .rounded-circle {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+  </style>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-3 fs-3" href="index1.html">
+        <img src="assets/img/logo.png" class="img-logo" alt="logo-web">
+        kostantine
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a id="chat-toggle" class="nav-link me-2" href="#">
+              <i data-feather="file-text"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="favorit" class="nav-link me-3" href="#">
+              <i data-feather="heart"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <button id="authButton" type="button" class="btn btn-outline-primary me-3 fs-5" onclick="handleAuthClick()">Profil</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Profile Section Start -->
+  <section class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="assets/img/user.png" alt="avatar" class="rounded-circle img-fluid">
+            <h5 class="my-3" id="userName">John Doe</h5>
+            <p class="text-muted mb-1">Full Stack Developer</p>
+            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary" onclick="editProfile()">Edit Profile</button>
+              <button type="button" class="btn btn-outline-primary ms-1" onclick="saveProfile()">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="card mb-4">
+          <div class="card-body">
+            <form id="profileForm">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" id="fullName" class="form-control" value="Johnathan Smith" disabled>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <input type="email" id="email" class="form-control" value="example@example.com" disabled>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" id="phone" class="form-control" value="(097) 234-5678" disabled>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Mobile</p>
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" id="mobile" class="form-control" value="(098) 765-4321" disabled>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" id="address" class="form-control" value="Bay Area, San Francisco, CA" disabled>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">assignment</span> Project Status</p>
+                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                <div class="progress rounded" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                <div class="progress rounded mb-2" style="height: 5px;">
+                  <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4 mb-md-0">
+              <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1">assignment</span> Recent Works</p>
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                  Kost Singgahsini Swarga Tipe B
+                  <span class="badge bg-primary rounded-pill">4.8</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                  Kost Singgahsini Sekar Uty Galaxy Tipe A
+                  <span class="badge bg-primary rounded-pill">4.5</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Profile Section End -->
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz4fnFO9gybBogGzS3lA4KuTk5f5jP7m5G5IBc31b5p7HU3j8jfnBh4Ksg"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-oBqDVmMz4fnFO9gybBogGzS3lA4KuTk5f5jP7m5G5IBc31b5p7HU3j8jfnBh4Ksg"
+    crossorigin="anonymous"></script>
+  <script>
+    feather.replace();
+
+    function editProfile() {
+      document.querySelectorAll('#profileForm input').forEach(input => input.disabled = false);
+    }
+
+    function saveProfile() {
+      const data = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        mobile: document.getElementById('mobile').value,
+        address: document.getElementById('address').value,
+      };
+
+      fetch('/api/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Profile updated successfully');
+            document.querySelectorAll('#profileForm input').forEach(input => input.disabled = true);
+          } else {
+            alert('Failed to update profile');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error updating profile');
+        });
+    }
+  </script>
+</body>
+
+</html>

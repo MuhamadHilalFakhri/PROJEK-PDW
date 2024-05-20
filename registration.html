@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/registration.css">
+    <title>Registration Page</title>
+</head>
+
+<body>
+
+    <div class="registration-card-container">
+        <div class="registration-card">
+            <div class="registration-card-header">
+                <h1>Create an Account</h1>
+                <div>Please fill in the form to register</div>
+            </div>
+            <form class="registration-card-form" id="registrationForm">
+                <div class="form-item">
+                    <input type="text" placeholder="Enter Full Name" id="fullNameForm" autofocus required>
+                </div>
+                <div class="form-item">
+                    <input type="text" placeholder="Enter Email" id="emailForm" required>
+                </div>
+                <div class="form-item">
+                    <input type="password" placeholder="Enter Password" id="passwordForm" required>
+                </div>
+                <div class="form-item">
+                    <input type="password" placeholder="Confirm Password" id="confirmPasswordForm" required>
+                </div>
+                <button type="button" onclick="register()">Register</button>
+            </form>
+            <div class="registration-card-footer">
+                Already have an account? <a href="login.html">Login here.</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function register() {
+            var fullName = document.getElementById("fullNameForm").value;
+            var email = document.getElementById("emailForm").value;
+            var password = document.getElementById("passwordForm").value;
+            var confirmPassword = document.getElementById("confirmPasswordForm").value;
+    
+            // Memeriksa apakah ada kolom yang kosong
+            if (fullName.trim() === "" || email.trim() === "" || password.trim() === "" || confirmPassword.trim() === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+    
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+    
+            // Save registration data (for example, to localStorage)
+            var userData = {
+                fullName: fullName,
+                email: email,
+                password: password
+            };
+    
+            // Convert userData to JSON string
+            var userDataJSON = JSON.stringify(userData);
+    
+            // Save userDataJSON to localStorage
+            localStorage.setItem("userData", userDataJSON);
+    
+            // Redirect to login page after successful registration
+            window.location.href = "login.html";
+        }
+    </script>
+    
+
+</body>
+
+</html>
