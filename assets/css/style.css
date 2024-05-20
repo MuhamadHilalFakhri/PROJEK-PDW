@@ -387,6 +387,9 @@ a {
     color: var(--primary);
 }
 
+.info{
+    font-size: 50px;
+}
 
 .pengajuan-kos-konten .minus-btn, .pengajuan-kos-konten .plus-btn{
     background-color: #E8E8E8;
